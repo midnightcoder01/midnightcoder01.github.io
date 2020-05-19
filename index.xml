@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Midnight Coder</title>
+    <link>http://midnightcoder.tech/</link>
+    <description>Recent content on Midnight Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://midnightcoder.tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to Manage Multiple GitHub Accounts on One Machine</title>
+      <link>http://midnightcoder.tech/posts/multiple-github-accounts/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://midnightcoder.tech/posts/multiple-github-accounts/</guid>
+      <description>I recently found myself in a situation where more than one GitHub account was being used from the same machine. There are several ways to manage this. Since I was using git in build and deploy scripts, it was a requirement to be able to securely push to remote repositories associated with different accounts without being prompted for usernames and passwords. The following are the steps involved.
+ Generate seperate SSH keys for each account.</description>
+    </item>
+    
+    <item>
+      <title>Dockerizing a Hugo Static Website</title>
+      <link>http://midnightcoder.tech/posts/dockerizing-my-website/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://midnightcoder.tech/posts/dockerizing-my-website/</guid>
+      <description>Recently, I decided to containerize my personal website (the one you are on right now) using Docker. Prior to this, I was using Virtual Machines (VM&#39;s) as a development environment for my site. Compared to Docker containers, VM&#39;s were a huge drag on my computer&#39;s performance. They were bloated and heavy; each VM took up space on my hard disk measured in GB. By comparison, my post-build Docker image takes less than 150MB of disk space.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Python Virtual Environments in Ubuntu</title>
+      <link>http://midnightcoder.tech/posts/python-virtual-environment/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://midnightcoder.tech/posts/python-virtual-environment/</guid>
+      <description>NOTE: This guide will assume you are using Python 3.3 and up. We will be using the newer venv module in place of virtualenv.
+Virtual environments help us avoid dependency issues that may arise in our Python projects. Imagine starting a project, and using v1.5 of a package in the project. At a later time, you update the same package to v.2 for another project. It is entirely possible that some or all of the code in your original project is now broken!</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/style.css">
+        <title>Dockerizing a Hugo Static Website</title>
+
+        
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+        
+        
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="header-column">
+                <div id="title"><a href="http://midnightcoder.tech">Midnight Coder</a></div>
+                <div id="subtitle">coffee, keyboards and programming</div>
+            </div>
+        </div>
+        
+            <hr>
+        
+        <div class="content">
+            
+    <p id="post-title">Dockerizing a Hugo Static Website</p>
+    <div class="date"> Jan 1, 2020 </div>
+    <div class="post-content">
+        <p>Recently, I decided to containerize my personal website (the one you are on right now) using Docker. Prior to this, I was using Virtual Machines (VM's) as a development environment for my site. Compared to Docker containers, 
+VM's were a huge drag on my computer's performance. They were bloated and heavy; each VM took up space on my hard disk measured in GB. By comparison, my post-build Docker image takes less than 150MB of disk space. Similar to a VM,
+the advantages of a container are - I can run the container on any computer and I use the same set of dependencies for each build, preventing a whole class of issues.</p>
+<p>This website is built using the static site generator Hugo. Hugo takes in data in the form of markdown files (my website content), and spits out static HTML files to be hosted on a server. 
+From a user perspective, the steps involved in this process are as follows - 
+first, a directory is created with the necessary files and sub-directories using the hugo new site command. Next, all necessary &ldquo;components&rdquo; of the wesite are added to this 
+directory - namely, blog posts (in markdown format), a config file, a CNAME file and a pre-defined theme straight from GitHub. This makes up the &ldquo;code&rdquo;, or data of my website.</p>
+<p>Now to the Dockerfile. I start my Dockerfile with a base image. I choose Ubuntu in this case, as I am most familiar with the Debian based apt package manager. The next line in my dockerfile is a RUN statement which updates package lists and installs 
+all required packages. I proceed to download the latest version of hugo (v0.62.2 as of early January 2020) from GitHub, and then install it.</p>
+<pre><code>FROM ubuntu
+WORKDIR /hugo
+RUN apt update \
+    &amp;&amp; apt -y install curl \
+    &amp;&amp; apt -y install git \
+    &amp;&amp; curl -LO https://github.com/gohugoio/hugo/releases/download/v0.62.2/hugo_0.62.2_Linux-64bit.deb \
+    &amp;&amp; apt install ./hugo_0.62.2_Linux-64bit.deb
+</code></pre><p>Here, I create and switch to a directory with the name &lsquo;blog&rsquo;. I run the hugo new site command and get the following files and subdirectories inside. I proceed to delete the default config file, as I will be replacing it with my own.</p>
+<pre><code>WORKDIR /blog
+RUN hugo new site myblog \
+    &amp;&amp; rm ./myblog/config.toml
+</code></pre><p>Now is the time to copy in my config file and content from the host machine to the docker container. This is done with the COPY command.</p>
+<pre><code>WORKDIR /blog/myblog
+COPY ./config.toml ./
+COPY ./posts ./content/posts
+</code></pre><p>With the RUN command, I proceed to clone my theme into the appropriate folder. The advantage of this is that I always get the latest version of the theme into my website. Remote files can also be copied into a folder using the ADD command, however,
+I just choose to a simple git clone here. I build my website with hugo -t refresh. refresh specifies the name of my theme. Following the build, Hugo generates static HTML files in a directory named public.</p>
+<pre><code>RUN git clone https://github.com/username/refresh.git ./themes/refresh \
+    &amp;&amp; hugo -t refresh
+</code></pre><p>This simply copies a CNAME file from the host computer to the newly created public directory.</p>
+<pre><code>COPY ./CNAME ./public
+</code></pre><p>The public folder is now ready for me to ship to a server for hosting. Here is the final form of the Dockerfile:</p>
+<pre><code>FROM ubuntu
+WORKDIR /hugo
+RUN apt update \
+    &amp;&amp; apt -y install curl \
+    &amp;&amp; apt -y install git \
+    &amp;&amp; curl -LO https://github.com/gohugoio/hugo/releases/download/v0.62.2/hugo_0.62.2_Linux-64bit.deb \
+    &amp;&amp; apt install ./hugo_0.62.2_Linux-64bit.deb
+WORKDIR /blog
+RUN hugo new site myblog \
+    &amp;&amp; rm ./myblog/config.toml
+WORKDIR /blog/myblog
+COPY ./config.toml ./
+COPY ./posts ./content/posts
+RUN git clone https://github.com/username/refresh.git ./themes/refresh \
+    &amp;&amp; hugo -t refresh
+COPY ./CNAME ./public
+</code></pre><h2 id="docker-lessons-learned">Docker Lessons Learned</h2>
+<ol>
+<li>Images should be as general as possible to enhance their re-usablilty as base images. Downstream images can be more application specific.</li>
+</ol>
+
+    </div>
+    <div class="tags post-tags">
+         
+            <span style="margin-right:8px"><a href="/tags" title="Tags">Tags:</a></span>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/docker">docker</a>
+                </span>
+            </div>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/ubuntu">ubuntu</a>
+                </span>
+            </div>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/containerization">containerization</a>
+                </span>
+            </div>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/hugo">hugo</a>
+                </span>
+            </div>
+             
+        
+    </div>
+    <div class="paginator">
+        
+            <span class="previous">
+                <a href="http://midnightcoder.tech/posts/multiple-github-accounts/" class="button">Previous</a>
+            </span>
+         
+        
+            <span class="next">
+                <a href="http://midnightcoder.tech/posts/python-virtual-environment/" class="button">Next</a>
+            </span>
+        
+    </div>
+    
+    <div class="disqus">
+        
+    </div>
+
+        </div>  
+    </body>
+
+</html>

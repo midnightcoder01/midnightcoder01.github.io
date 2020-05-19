@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/git/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/posts/multiple-github-accounts/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/posts/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/ubuntu/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/windows/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/containerization/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/docker/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/posts/dockerizing-my-website/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/hugo/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/linux/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/python/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/posts/python-virtual-environment/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://midnightcoder.tech/tags/virtual-environment/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+</urlset>

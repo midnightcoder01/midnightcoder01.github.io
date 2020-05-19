@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>virtual environment on Midnight Coder</title>
+    <link>http://midnightcoder.tech/tags/virtual-environment/</link>
+    <description>Recent content in virtual environment on Midnight Coder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://midnightcoder.tech/tags/virtual-environment/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up Python Virtual Environments in Ubuntu</title>
+      <link>http://midnightcoder.tech/posts/python-virtual-environment/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://midnightcoder.tech/posts/python-virtual-environment/</guid>
+      <description>NOTE: This guide will assume you are using Python 3.3 and up. We will be using the newer venv module in place of virtualenv.
+Virtual environments help us avoid dependency issues that may arise in our Python projects. Imagine starting a project, and using v1.5 of a package in the project. At a later time, you update the same package to v.2 for another project. It is entirely possible that some or all of the code in your original project is now broken!</description>
+    </item>
+    
+  </channel>
+</rss>

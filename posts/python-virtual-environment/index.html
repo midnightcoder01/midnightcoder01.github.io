@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/style.css">
+        <title>Setting Up Python Virtual Environments in Ubuntu</title>
+
+        
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+        
+        
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="header-column">
+                <div id="title"><a href="http://midnightcoder.tech">Midnight Coder</a></div>
+                <div id="subtitle">coffee, keyboards and programming</div>
+            </div>
+        </div>
+        
+            <hr>
+        
+        <div class="content">
+            
+    <p id="post-title">Setting Up Python Virtual Environments in Ubuntu</p>
+    <div class="date"> Feb 1, 2018 </div>
+    <div class="post-content">
+        <p><strong>NOTE:</strong> This guide will assume you are using Python 3.3 and up. We will be using the newer <code>venv</code> module in place of <code>virtualenv</code>.</p>
+<p>Virtual environments help us avoid dependency issues that may arise in our Python projects. Imagine starting a project, and using v1.5 of a package in the project.
+At a later time, you update the same package to v.2 for another project. It is entirely possible that some or all of the code in your original project is now broken! Imagine using dozens of packages with your project and having this problem with all of them. To avoid this, <strong>virtual environments allow us to use both particular versions of Python as well as particular versions of packages in self-contained projects</strong>. Polluting your global Python environment is not a good idea, especially since your Linux system itself is so heavily reliant on its Python installation.</p>
+<p>To set up a virtual environment, first ensure that you have the <code>python3-venv</code> package installed.</p>
+<pre><code>a=python3-venv; if apt list | grep -qw $a; then echo $a is installed; else sudo apt install $a; fi
+</code></pre><p>Next, <code>cd</code> into your projects directory and enter the following command:</p>
+<pre><code>python3 -m venv my_new_virtual_env
+</code></pre><p>The new virtual environment will have several directories and scripts inside. <code>my_new_virtual_env/bin</code> will contain a soft link to a Python binary or binaries, as well as activate scripts. To activate a virtual environment, simply enter:</p>
+<pre><code>source my_new_virtual_env/bin/activate
+</code></pre><p>Now your system's Python executable will only act within your virtual environment. You can install and use packages as usual.</p>
+<pre><code>pip install project
+</code></pre><p>Any installed packages will live in <code>my_new_virtual_env/lib</code>. To exit the virtual environment and return to the global environment:</p>
+<pre><code>deactivate
+</code></pre>
+    </div>
+    <div class="tags post-tags">
+         
+            <span style="margin-right:8px"><a href="/tags" title="Tags">Tags:</a></span>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/python">python</a>
+                </span>
+            </div>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/virtual-environment">virtual environment</a>
+                </span>
+            </div>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/ubuntu">ubuntu</a>
+                </span>
+            </div>
+            
+            <div class="button-grid">
+                <span id="tag-button">
+                    <a href="/tags/linux">linux</a>
+                </span>
+            </div>
+             
+        
+    </div>
+    <div class="paginator">
+        
+            <span class="previous">
+                <a href="http://midnightcoder.tech/posts/dockerizing-my-website/" class="button">Previous</a>
+            </span>
+         
+        
+    </div>
+    
+    <div class="disqus">
+        
+    </div>
+
+        </div>  
+    </body>
+
+</html>
